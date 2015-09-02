@@ -1,29 +1,27 @@
-# hello-nodejs
+# bbqapp-backend
 
-Prototype of a "grillapp".
-<br/>
-The application is separated in frontend and backend.
+This is the backend implementation of the bbqapp.
 
 ## Backend Getting Started
 
 
-* install node v0.10.XX
+* install node v0.12.XX
   * via nvm https://github.com/creationix/nvm
 
 * you need mongodb 2.4.X
   * ubuntu
 
-```
-sudo apt-get install mongodb
-```
+  ```
+  sudo apt-get install mongodb
+  ```
 
-* install npm packages globally (npm install -g <packagename>)
-  * grunt-cli (the build tool)
-  * mocha  (running tests)
-  * node-inspector (debugging)
+* install npm packages globally
+  ```
+  (sudo) npm install -g grunt-cli  # build tool
+  (sudo) npm install -g mocha      # run tests
+  ```
 
-
-* change to backend/myapp/ and install project dependencies
+* install project dependencies
   * (sudo) npm install
   * now you are done and can start calling the grunt tasks:
 
@@ -34,6 +32,6 @@ grunt eslint // run eslint
 grunt inspect // debugging
 ```
 
-## Frontend
+## License
 
-Prototype
+bbqapp-backend is release under the [MIT Licence](http://opensource.org/licenses/MIT)
