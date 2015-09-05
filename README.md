@@ -32,6 +32,22 @@ grunt eslint // run eslint
 grunt inspect // debugging
 ```
 
+## Docker
+
+First install docker on your machine.
+
+Docker image can be build with:
+
+```bash
+sudo docker build -t bbqapp/backend
+```
+
+Run the docker image. Currently mongodb runs on same host (localhost):
+
+```bash
+sudo docker run --rm -p 3000:3000 --net=host --name bbqapp bbqapp/backend
+```
+
 ## License
 
 bbqapp-backend is release under the [MIT Licence](http://opensource.org/licenses/MIT)
