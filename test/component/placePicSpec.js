@@ -1,10 +1,10 @@
 var assert = require('chai').assert;
 var supertest = require('supertest');
-var app = require('../lib/app.js');
+var app = require('../../app.js');
 var mongoose = require('mongoose');
 var async = require('async');
-var Place = require('../lib/models/place.js');
-var Picture = require('../lib/models/picture.js');
+var Place = require('../../lib/models/place.js');
+var Picture = require('../../lib/models/picture.js');
 var logger = require('winston');
 var fs = require('fs');
 

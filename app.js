@@ -1,16 +1,16 @@
 // libs
-var config = require('./config');
+var config = require('./lib/config');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var logger = require('./utils/logger.js');
-var utils = require('./utils.js');
+var logger = require('./lib/utils/logger.js');
+var utils = require('./lib/utils/utils.js');
 
 // routes
-var health = require('./routes/health.js');
-var place = require('./routes/place.js');
+var health = require('./lib/routes/health.js');
+var place = require('./lib/routes/place.js');
 
 // init express app
 var app = express();

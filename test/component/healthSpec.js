@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 var supertest = require('supertest');
-var app = require('../lib/app.js');
+var app = require('../../app.js');
 var async = require('async');
 var _ = require('lodash');
 

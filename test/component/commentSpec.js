@@ -1,10 +1,10 @@
 var assert = require('chai').assert;
 var supertest = require('supertest');
-var app = require('../lib/app.js');
+var app = require('../../app.js');
 var async = require('async');
-var Place = require('../lib/models/place.js');
-var Picture = require('../lib/models/picture.js');
-var MyComment = require('../lib/models/comment.js');
+var Place = require('../../lib/models/place.js');
+var Picture = require('../../lib/models/picture.js');
+var MyComment = require('../../lib/models/comment.js');
 var logger = require('winston');
 
 describe('Comments CRUD', function() {

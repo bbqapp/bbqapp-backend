@@ -1,10 +1,10 @@
 var assert = require('chai').assert;
 var supertest = require('supertest');
-var app = require('../lib/app.js');
+var app = require('../../app.js');
 var mongoose = require('mongoose');
 var _ = require('lodash');
-var Place = require('../lib/models/place.js');
-var placesUtils = require('./utils/places.js')(app);
+var Place = require('../../lib/models/place.js');
+var placesUtils = require('../utils/places.js')(app);
 
 after(function(done) {
   mongoose.disconnect();

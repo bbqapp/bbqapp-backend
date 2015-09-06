@@ -34,14 +34,14 @@ module.exports = function(grunt) {
       }
     },
     eslint: {
-      target: ['./lib/**/*.js', 'Gruntfile.js', './test/**/*.js']
+      target: ['./lib/**/*.js', 'app.js', 'Gruntfile.js', './test/**/*.js']
     },
     'node-inspector': {
       dev: {}
     },
     'exec': {
       tags: {
-        cmd: 'ctags-exuberant -a -e -f TAGS --tag-relative -R lib test'
+        cmd: 'ctags-exuberant -a -e -f TAGS --tag-relative -R lib test app.js Gruntfile.js'
       }
     }
   });

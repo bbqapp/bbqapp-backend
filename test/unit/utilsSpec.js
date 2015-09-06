@@ -1,6 +1,6 @@
 var assert = require('chai').assert;
 var moment = require('moment');
-var utils = require('../lib/utils');
+var utils = require('../../lib/utils/utils');
 var logger = require('winston');
 
 describe('test utils functions', function() {
