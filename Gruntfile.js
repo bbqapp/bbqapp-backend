@@ -44,6 +44,9 @@ module.exports = function(grunt) {
     'exec': {
       tags: {
         cmd: 'ctags-exuberant -a -e -f TAGS --tag-relative -R lib test app.js Gruntfile.js'
+      },
+      'swagger': {
+        cmd: 'swagger project edit'
       }
     }
   });
@@ -54,5 +57,6 @@ module.exports = function(grunt) {
   grunt.registerTask('test', ['env:test', 'eslint', 'mochaTest']);
   grunt.registerTask('inspect', ['node-inspector']);
   grunt.registerTask('tags', ['exec:tags']);
+  grunt.registerTask('swagger', ['exec:swagger']);
 
 };

@@ -17,8 +17,9 @@ This is the backend implementation of the bbqapp.
 
 * install npm packages globally
   ```
-  (sudo) npm install -g grunt-cli  # build tool
-  (sudo) npm install -g mocha      # run tests
+  npm install -g grunt-cli  # build tool
+  npm install -g mocha      # run tests
+  npm install -g swagger    # run swagger editor
   ```
 
 * install project dependencies
@@ -30,6 +31,7 @@ grunt  // run server via nodemon, automatic code reload
 grunt test // run test suite
 grunt eslint // run eslint
 grunt inspect // debugging
+grunt swagger // run swagger editor (save on-the-fly in api/swagger/swagger.yaml)
 ```
 
 ## Docker
