@@ -1,3 +1,5 @@
+"use strict";  // eslint-disable-line
+
 var assert = require('chai').assert;
 var async = require('async');
 

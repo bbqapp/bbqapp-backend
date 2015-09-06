@@ -1,3 +1,5 @@
+"use strict";  // eslint-disable-line
+
 var assert = require('chai').assert;
 var moment = require('moment');
 var utils = require('../../lib/utils/utils');

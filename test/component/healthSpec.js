@@ -1,3 +1,5 @@
+"use strict";  // eslint-disable-line
+
 var expect = require('chai').expect;
 var supertest = require('supertest');
 var app = require('../../app.js');

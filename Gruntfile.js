@@ -1,3 +1,5 @@
+"use strict";  // eslint-disable-line
+
 module.exports = function(grunt) {
 
   // load plugins
@@ -24,13 +26,13 @@ module.exports = function(grunt) {
     },
     env : {
       dev : {
-        src : 'env_config/env_dev.json'
+        src : 'lib/config/env/env_dev.json'
       },
       test: {
-        src: 'env_config/env_dev.json'
+        src: 'lib/config/env/env_test.json'
       },
       prod: {
-        src: 'env_config/env_prod.json'
+        src: 'lib/config/env/env_prod.json'
       }
     },
     eslint: {
@@ -48,7 +50,7 @@ module.exports = function(grunt) {
 
 
   // register tasks
-  grunt.registerTask('default', ['env:dev', 'nodemon']);
+  grunt.registerTask('default', ['env:dev', 'eslint', 'nodemon']);
   grunt.registerTask('test', ['env:test', 'eslint', 'mochaTest']);
   grunt.registerTask('inspect', ['node-inspector']);
   grunt.registerTask('tags', ['exec:tags']);

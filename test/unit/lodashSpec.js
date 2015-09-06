@@ -1,3 +1,5 @@
+"use strict";  // eslint-disable-line
+
 var _ = require('lodash');
 var assert = require('chai').assert;
 
