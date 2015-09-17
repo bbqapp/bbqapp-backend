@@ -24,17 +24,6 @@ module.exports = function(grunt) {
         src: ['test/**/*.js']
       }
     },
-    env : {
-      dev : {
-        src : 'lib/config/env/env_dev.json'
-      },
-      test: {
-        src: 'lib/config/env/env_test.json'
-      },
-      prod: {
-        src: 'lib/config/env/env_prod.json'
-      }
-    },
     eslint: {
       target: ['./lib/**/*.js', 'app.js', 'Gruntfile.js', './test/**/*.js']
     },
@@ -47,14 +36,23 @@ module.exports = function(grunt) {
       },
       'swagger': {
         cmd: 'swagger project edit'
+      },
+      'envdev': {
+        cmd: '. ./lib/config/env/env_dev.sh'
+      },
+      'envtest': {
+        cmd: '. ./lib/config/env/env_test.sh'
+      },
+      'envprod': {
+        cmd: '. ./lib/config/env/env_prod.sh'
       }
     }
   });
 
 
   // register tasks
-  grunt.registerTask('default', ['env:dev', 'eslint', 'nodemon']);
-  grunt.registerTask('test', ['env:test', 'eslint', 'mochaTest']);
+  grunt.registerTask('default', ['exec:envdev', 'eslint', 'nodemon']);
+  grunt.registerTask('test', ['exec:envtest', 'eslint', 'mochaTest']);
   grunt.registerTask('inspect', ['node-inspector']);
   grunt.registerTask('tags', ['exec:tags']);
   grunt.registerTask('swagger', ['exec:swagger']);

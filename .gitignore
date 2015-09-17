@@ -32,4 +32,4 @@ node_modules
 TAGS
 
 # ignore environment settings files, only push template file
-env_*.json
+env_*.sh

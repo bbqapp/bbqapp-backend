@@ -1,5 +1,0 @@
-{
-  "DB_URL": "mongodb://localhost/app-test",
-  "LOG_LEVEL": "debug",
-  "LOG_PATH": "logs/development.log"
-}
