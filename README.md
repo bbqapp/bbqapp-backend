@@ -5,7 +5,7 @@ This is the backend implementation of the bbqapp.
 ## Backend Getting Started
 
 
-* install node v0.12.XX
+* install node v4.1.0
   * via nvm https://github.com/creationix/nvm
 
 * you need mongodb 2.4.X
@@ -24,11 +24,21 @@ This is the backend implementation of the bbqapp.
 
 * install project dependencies
   * (sudo) npm install
-  * now you are done and can start calling the grunt tasks:
+
+* Configure Environment variables
+
+```bash
+cd ./lib/config/env/env_dev.sh.template
+cp env_dev.sh.template env_dev.sh
+cp env_dev.sh.template env_test.sh
+# adjust files to your needs
+```
+
+* Start running tasks
 
 ```
 grunt  // run server via nodemon, automatic code reload
-grunt test // run test suite
+npm test // run test suite...yes it is npm :)
 grunt eslint // run eslint
 grunt inspect // debugging
 grunt swagger // run swagger editor (save on-the-fly in api/swagger/swagger.yaml)

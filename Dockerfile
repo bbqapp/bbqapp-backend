@@ -1,4 +1,4 @@
-FROM node:0.12.7-wheezy
+FROM node:4.0.0-wheezy
 
 # Bundle app source
 COPY . /src
@@ -8,5 +8,5 @@ RUN cd /src; npm install --production
 
 WORKDIR /src
 
-EXPOSE  3000
+EXPOSE 3000
 CMD ["bin/www"]
