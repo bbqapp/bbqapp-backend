@@ -36,23 +36,13 @@ module.exports = function(grunt) {
       },
       'swagger': {
         cmd: 'swagger project edit'
-      },
-      'envdev': {
-        cmd: '. ./lib/config/env/env_dev.sh'
-      },
-      'envtest': {
-        cmd: '. ./lib/config/env/env_test.sh'
-      },
-      'envprod': {
-        cmd: '. ./lib/config/env/env_prod.sh'
       }
     }
   });
 
-
   // register tasks
-  grunt.registerTask('default', ['exec:envdev', 'eslint', 'nodemon']);
-  grunt.registerTask('test', ['exec:envtest', 'eslint', 'mochaTest']);
+  grunt.registerTask('default', ['eslint', 'nodemon']);
+  grunt.registerTask('test', ['eslint', 'mochaTest']);
   grunt.registerTask('inspect', ['node-inspector']);
   grunt.registerTask('tags', ['exec:tags']);
   grunt.registerTask('swagger', ['exec:swagger']);

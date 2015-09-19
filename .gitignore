@@ -33,3 +33,6 @@ TAGS
 
 # ignore environment settings files, only push template file
 env_*.sh
+
+# ignore mocha test results
+results.txt
