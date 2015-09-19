@@ -20,19 +20,19 @@ describe('test utils functions', function() {
       var m = moment();
 
       // print unix time
-      // logger.info('m.valueOf():     ' + m.valueOf());
-      // logger.info('m_utc.valueOf(): ' + m_utc.valueOf());
+      logger.info('m.valueOf():     ' + m.valueOf());
+      logger.info('m_utc.valueOf(): ' + m_utc.valueOf());
 
       // print human formated time
-      // logger.info('m.format():     ' + m.format());
-      // logger.info('m_utc.format(): ' + m_utc.format());
+      logger.info('m.format():     ' + m.format());
+      logger.info('m_utc.format(): ' + m_utc.format());
       done();
     });
 
     it('#default Date functions', function(done) {
       var date = new Date();
-      // logger.info('date: ' + date);
-      // logger.info('date.now: ' + Date.now());
+      logger.info('date: ' + date);
+      logger.info('date.now: ' + Date.now());
       done();
     });
   });
