@@ -37,6 +37,7 @@ cp env_dev.sh.template env_test.sh
 * Start running tasks
 
 ```
+. ./lib/config/env/env_dev.sh  // source your environment vars
 grunt  // run server via nodemon, automatic code reload
 npm test // run test suite...yes it is npm :)
 grunt eslint // run eslint
