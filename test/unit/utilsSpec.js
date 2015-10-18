@@ -25,7 +25,9 @@ describe('test utils functions', function() {
 
       // print human formated time
       logger.info('m.format():     ' + m.format());
+      logger.info('m.toISOString(): ' + m.toISOString());
       logger.info('m_utc.format(): ' + m_utc.format());
+      logger.info('m_utc.toISOString(): ' + m_utc.toISOString());
       done();
     });
 

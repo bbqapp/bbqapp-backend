@@ -29,6 +29,7 @@ describe('#addPictureToPlace()', function() {
     async.waterfall([function(callback) {
       // save place
       var stuttgartSchlossplatz = {
+        type: 'grillplatz',
         location:
         {type: 'Point', coordinates: [9.179931, 48.778648]},
         tags: ['grill', 'schlossplatz']

@@ -39,28 +39,21 @@ app.use(function(req, res, next) {
 });
 
 // error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) { // eslint-disable-line
-    logger.error({status: err.status,
-                  msg: err.message, err: err});
-    var status = err.status || 500;
-    res.status(status);
-    res.set('Content-Type', 'application/json');
-    res.json({status: status, msg: err.message, err: err});
-  });
-}
-
-// production error handler
-// no stacktraces leaked to user
 app.use(function(err, req, res, next) { // eslint-disable-line
-  logger.error(err);
   var status = err.status || 500;
+  var code = err.code || 'INTERNAL_ERROR';
   res.status(status);
   res.set('Content-Type', 'application/json');
-  res.json({status: status, msg: err.message});
+  logger.error({status: err.status,
+                msg: err.message, err: err, code: code});
+  if (app.get('env') === 'development') {
+    // development respond with stacktrace for better debugging
+    res.json({status: status, msg: err.message, code: code, err: err});
+  } else {
+    // production (don't respond with error stacktrace)
+    res.json({status: status, msg: err.message, code: code});
+  }
+
 });
 
 module.exports = app;

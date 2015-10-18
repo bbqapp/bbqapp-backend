@@ -25,21 +25,25 @@ describe('Places CRUD', function() {
   describe('#savePlace()', function() {
     it('store place in mongodb', function(done) {
       var stuttgartRotebuelplatz = {
+        type: 'grillplatz',
         location:
         {type: 'Point', coordinates: [9.171303, 48.774823]},
         tags: ['grill', 'rotebuehlplatz']
       };
       var stuttgartSchlossplatz = {
+        type: 'grillplatz',
         location:
         {type: 'Point', coordinates: [9.179931, 48.778648]},
         tags: ['grill', 'schlossplatz']
       };
       var hamburg = {
+        type: 'grillplatz',
         location:
         {type: 'Point', coordinates: [9.868667, 53.547881]},
         tags: ['grill', 'hamburg']
       };
       var frankfurt = {
+        type: 'grillplatz',
         location:
         {type: 'Point', coordinates: [8.639660, 50.115110]},
         tags: ['grill', 'frankfurt']
