@@ -1,6 +1,6 @@
 "use strict"; // eslint-disable-line
 
-var logger = require('winston');
+var logger = require('../../lib/utils/logger');
 var expect = require('chai').expect;
 var Promise = require('bluebird');
 var _ = require('lodash');

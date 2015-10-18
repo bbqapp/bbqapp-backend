@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var async = require('async');
 var Place = require('../../lib/models/place.js');
 var Picture = require('../../lib/models/picture.js');
-var logger = require('winston');
+var logger = require('../../lib/utils/logger');
 var fs = require('fs');
 
 after(function(done) {

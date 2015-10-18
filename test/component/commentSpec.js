@@ -7,7 +7,7 @@ var async = require('async');
 var Place = require('../../lib/models/place.js');
 var Picture = require('../../lib/models/picture.js');
 var MyComment = require('../../lib/models/comment.js');
-var logger = require('winston');
+var logger = require('../../lib/utils/logger');
 
 describe('Comments CRUD', function() {
   before(function(done) {

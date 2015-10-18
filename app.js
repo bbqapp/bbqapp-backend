@@ -46,7 +46,7 @@ app.use(function(err, req, res, next) { // eslint-disable-line
   res.set('Content-Type', 'application/json');
   logger.error({status: err.status,
                 msg: err.message, err: err, code: code});
-  if (app.get('env') === 'development') {
+  if (app.get('env') === 'development' || app.get('env') === 'test') {
     // development respond with stacktrace for better debugging
     res.json({status: status, msg: err.message, code: code, err: err});
   } else {

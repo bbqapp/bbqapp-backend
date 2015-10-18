@@ -3,7 +3,7 @@
 var assert = require('chai').assert;
 var moment = require('moment');
 var utils = require('../../lib/utils/utils');
-var logger = require('winston');
+var logger = require('../../lib/utils/logger');
 
 describe('test utils functions', function() {
   it('#isImageOrVideo()', function(done) {

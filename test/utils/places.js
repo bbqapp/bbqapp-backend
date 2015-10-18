@@ -1,36 +1,68 @@
 "use strict";  // eslint-disable-line
 
 var assert = require('chai').assert;
+var expect = require('chai').expect;
 var supertest = require('supertest');
 var async = require('async');
-var logger = require('winston');
+var Promise = require('bluebird');
+var logger = require('../../lib/utils/logger');
+var _ = require('lodash');
 
 module.exports = function(app) {
 
   var my = {
-    insertPlaces: function(places, done) {
-      async.each(places, function(item, callback) {
+    savePlace: function(place) {
+      logger.debug('in savePlace(): ', {place: place});
+      return new Promise(function(resolve, reject) {
         supertest(app).post('/api/places')
-          .send(item)
+          .send(place)
           .expect(201)
+          .expect('Content-Type', /json/)
           .end(function(err, res) {
             if (err) {
-              return callback(err);
+              logger.error('ERROR during savePlace()', {err: err});
+              reject(err);
+            } else {
+              logger.debug('savePlace() returns: ', {body: res.body});
+              expect(res.body._id).to.be.ok;  // eslint-disable-line
+              resolve(res.body._id);
             }
-            // response should contain new mongo ObjectIds
-            assert.isDefined(res.body._id, 'res.body should contain an _id');
-            return callback();
           });
-      }, function(err) {
-        if (err) {
-          done(err); // test failed
-        } else  {
-          done();  // test passed
-        }
       });
     },
-    echo: function() {
-      logger.debug('echoooo');
+    savePlaces: function(places) {
+      var promises = _.map(places, this.savePlace, this);
+      return Promise.all(promises);
+    },
+    getPlaceById: function(id) {
+      logger.debug('getPlaceById() id: ', {id: id});
+      return new Promise(function(resolve, reject) {
+        supertest(app).get('/api/places/' + id)
+          .expect(200)
+          .expect('Content-Type', /json/)
+          .end(function(err, res) {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(res.body);
+            }
+          });
+      });
+    },
+    getPlaces: function(location) {
+      return new Promise(function(resolve, reject) {
+        supertest(app).get('/api/places')
+          .query({location: location})
+          .expect(200)
+          .expect('Content-Type', /json/)
+          .end(function(err, res) {
+            if (err) {
+              reject(err);
+            }
+            var places = res.body;
+            resolve(places);
+          });
+      });
     }
   };
 
