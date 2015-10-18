@@ -1,14 +1,11 @@
 "use strict";  // eslint-disable-line
 
-var assert = require('chai').assert;
 var expect = require('chai').expect;
-var supertest = require('supertest');
 var app = require('../../app.js');
 var mongoose = require('mongoose');
 var _ = require('lodash');
 var Place = require('../../lib/models/place.js');
 var placesUtils = require('../utils/places.js')(app);
-var Promise = require('bluebird');
 var logger = require('../../lib/utils/logger');
 
 after(function(done) {
@@ -70,6 +67,9 @@ describe('Places CRUD', function() {
     it('#002 get places near stuttgart schlossplatz', function(done) {
       placesUtils.savePlaces(places)
         .then(function(ids) {
+          logger.debug('returned ids:', {ids: ids,
+                                         filename: __filename,
+                                         fn: 'savePlaces'});
           var location = '9.171304,48.774822';
           placesUtils.getPlaces(location)
             .then(function(places) {
@@ -84,7 +84,6 @@ describe('Places CRUD', function() {
             });
         });
     });
-
     it('#003 get place by id', function(done) {
       var place = {
         type: 'grillplatz',
@@ -96,11 +95,11 @@ describe('Places CRUD', function() {
         .then(placesUtils.getPlaceById)
         .then(function(place) {
           logger.debug('returned place: ',
-                       {
-                         file: __filename,
-                         fn: 'getPlaceById test #002',
-                         place: place
-                       });
+            {
+              file: __filename,
+              fn: 'getPlaceById test #002',
+              place: place
+            });
           expect(place).to.be.ok;  // eslint-disable-line
           expect(place.type).to.be.equal('grillplatz');
           expect(place.tags).to.be.deep.equal(['grill', 'schlossplatz', 'id123']);

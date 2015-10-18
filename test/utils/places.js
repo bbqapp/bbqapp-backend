@@ -1,9 +1,7 @@
 "use strict";  // eslint-disable-line
 
-var assert = require('chai').assert;
 var expect = require('chai').expect;
 var supertest = require('supertest');
-var async = require('async');
 var Promise = require('bluebird');
 var logger = require('../../lib/utils/logger');
 var _ = require('lodash');
