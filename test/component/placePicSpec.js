@@ -68,7 +68,7 @@ describe('#addPictureToPlace()', function() {
             callback(null, id, pictureId);
           });
       });
-    }, function(id, pictureId, callback) {
+    },function(id, pictureId, callback) {
       // verify pictures binary data is accessable via REST
       supertest(app).get('/api/places/' + id +'/pictures/' + pictureId)
         .expect(200)
@@ -101,7 +101,8 @@ describe('#addPictureToPlace()', function() {
 
           callback(null, pictureId);
         });
-    }], function(err ,result) { // eslint-disable-line
+    }
+   ], function(err ,result) { // eslint-disable-line
       if (err) {
         logger.log('error','ERROR: %s', JSON.stringify(err));
         done(err);
