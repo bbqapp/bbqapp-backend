@@ -95,7 +95,8 @@ describe('Comments CRUD', function() {
             assert.strictEqual(comment.comment, 'comment text', 'comment must match');
             callback(null, id, commentId);
           });
-      }], function(err, result) { // eslint-disable-line
+      }
+                      ], function(err, result) { // eslint-disable-line
         if (err) {
           logger.log('error','ERROR: %s', JSON.stringify(err));
           done(err);
