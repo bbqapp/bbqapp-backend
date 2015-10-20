@@ -7,6 +7,7 @@ var _ = require('lodash');
 var Place = require('../../lib/models/place.js');
 var placesUtils = require('../utils/places.js')(app);
 var logger = require('../../lib/utils/logger');
+var supertest = require('supertest');
 
 after(function(done) {
   mongoose.disconnect();
@@ -107,6 +108,50 @@ describe('Places CRUD', function() {
         })
         .catch(function(err) {
           done(err);
+        });
+    });
+    it('#004 get places with invalid location', function(done) {
+      placesUtils.savePlaces(places)
+        .then(function(ids) {
+          logger.debug('returned ids:', {ids: ids,
+                                         filename: __filename,
+                                         fn: 'savePlaces'});
+          var location = '9.17130';
+          supertest(app).get('/api/places')
+            .query({location: location})
+            .expect(400)
+            .expect('Content-Type', /json/)
+            .end(function(err, res) {
+              logger.debug('res.body', {body: res.body});
+              if (err) {
+                done(err);
+              }
+              var error = res.body;
+              expect(error.code).to.be.equal('BAD_REQUEST');;
+              expect(error.err.errors).to.have.length(1);
+              done(null);
+            });
+        });
+    });
+    it('#005 get places with no location', function(done) {
+      placesUtils.savePlaces(places)
+        .then(function(ids) {
+          logger.debug('returned ids:', {ids: ids,
+                                         filename: __filename,
+                                         fn: 'savePlaces'});
+          supertest(app).get('/api/places')
+            .expect(400)
+            .expect('Content-Type', /json/)
+            .end(function(err, res) {
+              logger.debug('res.body', {body: res.body});
+              if (err) {
+                done(err);
+              }
+              var error = res.body;
+              expect(error.code).to.be.equal('BAD_REQUEST');;
+              expect(error.err.errors).to.have.length(2);
+              done(null);
+            });
         });
     });
   });

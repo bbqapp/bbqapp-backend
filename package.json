@@ -16,6 +16,7 @@
     "lodash": "^3.9.3",
     "moment": "^2.10.3",
     "mongoose": "^4.0.4",
+    "validator": "^4.1.0",
     "winston": "^1.0.0"
   },
   "devDependencies": {
