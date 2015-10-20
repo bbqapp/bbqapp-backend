@@ -74,7 +74,7 @@ describe('Comments CRUD', function() {
             expect(comments[0]).to.be.ok;  // eslint-disable-line
             var comment = comments[0];
             expect(comment.createdAt).to.be.ok; // eslint-disable-line
-            expect(comment.score).to.be.equal(4)
+            expect(comment.score).to.be.equal(4);
             expect(comment.comment).to.be.equal('comment text');
             callback(null, id, commentId);
           });
