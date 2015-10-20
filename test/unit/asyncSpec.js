@@ -1,6 +1,6 @@
 "use strict";  // eslint-disable-line
 
-var assert = require('chai').assert;
+var expect = require('chai').expect;
 var async = require('async');
 
 function increase(i, callback) {
@@ -20,7 +20,7 @@ describe('asyncjs test', function() {
           done(err);
           return;
         }
-        assert.equal(2, result, 'increased number must match');
+        expect(2).to.be.equal(result);
         done();
       });
     });
@@ -28,8 +28,8 @@ describe('asyncjs test', function() {
       var arr = [1,2,3];
       async.map(arr, increase, function(err, results){
         // results is now an array with numbers+1
-        assert.include(results, 4, 'results must include number');
-        assert.lengthOf(results, 3, 'result array length must match');
+        expect(results).to.include(4);
+        expect(results).to.have.length(3);
       });
       done();
     });
@@ -37,7 +37,7 @@ describe('asyncjs test', function() {
       var arr = [1,2,3,4,5,6,7,8,9,-1];
       async.each(arr, increase, function(err){
         // results is now an array with numbers+1
-        assert.isDefined(err, 'error must be defined');
+        expect(err).to.be.ok; // eslint-disable-line
       });
       done();
     });
@@ -54,8 +54,8 @@ describe('asyncjs test', function() {
            callback(null, 'two');
          }],
         function(err, results) {
-          assert.include(results, 'one', 'result must include one');
-          assert.include(results, 'two', 'result must include two');
+          expect(results).to.include('one');
+          expect(results).to.include('two');
           done();
         });
     });
@@ -68,8 +68,8 @@ describe('asyncjs test', function() {
            increase(1, callback);
          }],
         function(err, results) {
-          assert.include(results, 1, 'results must include 1');
-          assert.include(results, 2, 'results must include 2');
+          expect(results).to.include(1);
+          expect(results).to.include(2);
           done();
         });
     });
@@ -82,13 +82,14 @@ describe('asyncjs test', function() {
           callback(null, 1, 2);
         },
         function(arg1, arg2, callback) {
-          assert.equal(1, arg1, 'number must match');
-          assert.equal(2, arg2, 'number must match');
+          expect(1).to.be.equal(arg1);
+          expect(2).to.be.equal(arg2);
           callback(null, 3);
-        }],
+        }
+      ],
                       function(err, result) {
-                        assert.isNull(err, 'err must not be defined');
-                        assert.equal(3, result, 'result must match');
+                        expect(err).to.be.null;  // eslint-disable-line
+                        expect(3).to.be.equal(result);
                         done();
                       });
     });

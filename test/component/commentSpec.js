@@ -1,6 +1,6 @@
 "use strict";  // eslint-disable-line
 
-var assert = require('chai').assert;
+var expect = require('chai').expect;
 var supertest = require('supertest');
 var app = require('../../app.js');
 var async = require('async');
@@ -39,7 +39,7 @@ describe('Comments CRUD', function() {
               return;
             }
             var id = res.body._id;
-            assert.isDefined(id, 'res.body should contain _id');
+            expect(id).to.be.ok; // eslint-disable-line
             callback(null, id);
           });
 
@@ -56,7 +56,7 @@ describe('Comments CRUD', function() {
               return;
             }
             var commentId = res.body._id;
-            assert.isDefined(commentId, 'commentId must be returned after creation');
+            expect(commentId).to.be.ok;  // eslint-disable-line
             callback(null, id, commentId);  // pass ids to next function
           });
       }, function(id, commentId, callback) {
@@ -71,11 +71,11 @@ describe('Comments CRUD', function() {
               return;
             }
             var comments = res.body;
-            assert.isDefined(comments[0], 'it must exist one comment');
+            expect(comments[0]).to.be.ok;  // eslint-disable-line
             var comment = comments[0];
-            assert.isDefined(comment.createdAt, 'createdAt should be set');
-            assert.strictEqual(comment.score, 4, 'comment.score must match');
-            assert.strictEqual(comment.comment, 'comment text', 'comment must match');
+            expect(comment.createdAt).to.be.ok; // eslint-disable-line
+            expect(comment.score).to.be.equal(4)
+            expect(comment.comment).to.be.equal('comment text');
             callback(null, id, commentId);
           });
       }, function(id, commentId, callback) {
@@ -90,9 +90,9 @@ describe('Comments CRUD', function() {
               return;
             }
             var comment = res.body;
-            assert.isDefined(comment.createdAt, 'createdAt should be set');
-            assert.strictEqual(comment.score, 4, 'comment.score must match');
-            assert.strictEqual(comment.comment, 'comment text', 'comment must match');
+            expect(comment.createdAt).to.be.ok; // eslint-disable-line
+            expect(comment.score).to.be.equal(4);
+            expect(comment.comment).to.be.equal('comment text');
             callback(null, id, commentId);
           });
       }

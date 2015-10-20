@@ -1,6 +1,6 @@
 "use strict";  // eslint-disable-line
 
-var assert = require('chai').assert;
+var expect = require('chai').expect;
 var supertest = require('supertest');
 var app = require('../../app.js');
 var mongoose = require('mongoose');
@@ -44,7 +44,7 @@ describe('#addPictureToPlace()', function() {
           }
           var id = res.body._id;
           logger.log('debug','insertPlace(): returned id: %s', id);
-          assert.isDefined(id, 'res.body should contain _id');
+          expect(id).to.be.ok; // eslint-disable-line
           callback(null, id);
         });
     }, function(id, callback) {
@@ -90,14 +90,13 @@ describe('#addPictureToPlace()', function() {
             callback(err);
             return;
           }
-          // assertions
           var pictures = res.body;
-          assert.lengthOf(pictures, 1);
+          expect(pictures).to.have.length(1);
           var p = pictures[0];
-          assert.strictEqual(p.meta.mimetype, 'image/jpeg');
-          assert.isDefined(p.meta.createdAt, 'createdAt should be set');
-          assert.isDefined(p.meta.url, 'url should be set');
-          assert.equal(p._place, id, 'placeId should match');
+          expect(p.meta.mimetype).to.be.equal('image/jpeg');
+          expect(p.meta.createdAt).to.be.ok; // eslint-disable-line
+          expect(p.meta.url).to.be.ok;
+          expect(p._place).to.be.equal(id);
 
           callback(null, pictureId);
         });

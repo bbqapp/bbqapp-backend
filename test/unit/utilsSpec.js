@@ -1,16 +1,16 @@
 "use strict";  // eslint-disable-line
 
-var assert = require('chai').assert;
+var expect = require('chai').expect;
 var moment = require('moment');
 var utils = require('../../lib/utils/utils');
 var logger = require('../../lib/utils/logger');
 
 describe('test utils functions', function() {
   it('#isImageOrVideo()', function(done) {
-    assert.ok(utils.matchImageOrVideo('image/jpeg'), 'content type matches');
-    assert.ok(utils.matchImageOrVideo('video/mpeg'), 'content type matches');
-    assert.notOk(utils.matchImageOrVideo('application/zip'), 'content type is not supported ');
-    assert.notOk(utils.matchImageOrVideo('application/octet-stream'), 'content type is not supported ');
+    expect(utils.matchImageOrVideo('image/jpeg')).to.be.ok; // eslint-disable-line
+    expect(utils.matchImageOrVideo('video/mpeg')).to.be.ok; // eslint-disable-line
+    expect(utils.matchImageOrVideo('application/zip')).to.be.false;  // eslint-disable-line
+    expect(utils.matchImageOrVideo('application/octet-stream')).to.be.false; // eslint-disable-line
     done();
   });
 
