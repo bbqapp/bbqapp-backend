@@ -45,10 +45,11 @@ app.use(function(err, req, res, next) { // eslint-disable-line
   res.status(status);
   res.set('Content-Type', 'application/json');
   logger.error({status: err.status,
-                msg: err.message, err: err, code: code});
+                msg: err.message, code: code,
+                err: err, stack: err.stack});
   if (app.get('env') === 'development' || app.get('env') === 'test') {
     // development respond with stacktrace for better debugging
-    res.json({status: status, msg: err.message, code: code, err: err});
+    res.json({status: status, msg: err.message, code: code, err: err, stack: err.stack});
   } else {
     // production (don't respond with error stacktrace)
     res.json({status: status, msg: err.message, code: code});

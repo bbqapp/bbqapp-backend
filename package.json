@@ -1,13 +1,13 @@
 {
-  "name": "myapp",
-  "version": "0.0.0",
+  "name": "bbqapp",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
     "test": ". ./lib/config/env/env_test.sh && mocha './test/**/*js'"
   },
   "dependencies": {
-    "async": "^1.2.1",
+    "async": "^1.5.0",
     "bluebird": "^2.10.0",
     "body-parser": "~1.12.4",
     "cookie-parser": "~1.3.5",
@@ -26,9 +26,9 @@
     "grunt-eslint": "^17.0.0",
     "grunt-exec": "^0.4.6",
     "grunt-mocha-test": "^0.12.7",
-    "grunt-node-inspector": "^0.2.0",
+    "grunt-node-inspector": "^0.4.1",
     "grunt-nodemon": "^0.4.0",
     "mocha": "^2.2.5",
-    "supertest": "^1.0.1"
+    "supertest": "^1.1.0"
   }
 }

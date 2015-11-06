@@ -96,7 +96,7 @@ describe('bluebird promise experiments', function() {
           throw new Error('provoke error');
         })
         .catch(function(e) {
-          logger.error(e);
+          // logger.error(e);
           // do not fail test, we want to provoke error!
           done();
         });

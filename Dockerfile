@@ -1,4 +1,4 @@
-FROM node:4.0.0-wheezy
+FROM node:4.2.2
 
 # Bundle app source
 COPY . /src
